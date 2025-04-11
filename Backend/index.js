@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require('express')
 const app = express();
 
+
 // import our connection function 
 const connectDB = require('./config/db')
 
@@ -18,6 +19,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send("🚀 API is running...");
 })
+
+const authRoutes = require('./routes/auth')
+app.use('/api', authRoutes)   // Makes all routes in auth.js start with /api — like /api/register
 
 //  Use PORT from .env or default to 5000
 const PORT = process.env.PORT || 5000;
