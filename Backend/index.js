@@ -6,14 +6,16 @@ const express = require('express')
 const app = express();
 
 
+// middleware to parse json
+app.use(express.json());
+
 // import our connection function 
 const connectDB = require('./config/db')
 
 // connect to Mongodb
 connectDB();  //this starts the connection process
 
-// middleware to parse json
-app.use(express.json());
+
 
 //  Test route to verify server is working
 app.get('/', (req, res) => {
@@ -21,7 +23,7 @@ app.get('/', (req, res) => {
 })
 
 const authRoutes = require('./routes/auth')
-app.use('/api', authRoutes)   // Makes all routes in auth.js start with /api — like /api/register
+app.use('/api/auth', authRoutes)   // Makes all routes in auth.js start with /api — like /api/register
 
 //  Use PORT from .env or default to 5000
 const PORT = process.env.PORT || 5000;
