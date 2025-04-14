@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
 
     // if password is valid, create a JWT token
     const token = jwt.sign(
-      { id: user._id },             // Payload (user info)
+      { userId: user._id },             // Payload (user info)
       process.env.JWT_SECRET,       //secret key (stored in .env)
       { expiresIn: "1d" }           // optional expiry time (e.g., 1 day)
     );
