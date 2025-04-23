@@ -6,6 +6,8 @@ import Register from './pages/Register'
 import BlogDetail from "./pages/BlogDetail"
 import NewBlog from './pages/NewBlog'
 import EditBlog from './pages/EditBlog'
+import ProtectedRoute from "./components/ui/ProtectedRoute";
+
 
 
 export default function App() {
@@ -19,10 +21,30 @@ export default function App() {
           {/* Define different routes inside the MainLayout */}
           <Route index element={<home />} /> {/* Home route */}
           <Route path="login" element={<Login />} /> {/* Login route */}
-          <Route path="register" element={<Register />} />    {/* Register route */}
-          <Route path="blog/:id" element={<BlogDetail />} />    {/* Blog detail route */}
-          <Route path="new" element={<NewBlog />} />  {/* new blog route */}
-          <Route path="edit/:id" element={<EditBlog />} /> {/* edit blog route */}
+          <Route path="register" element={<Register />} />{" "}
+          {/* Register route */}
+          <Route path="blog/:id" element={<BlogDetail />} />{" "}
+          {/* Blog detail route */}
+
+          <Route
+            path="new"
+            element={
+              <ProtectedRoute>
+                <NewBlog />
+              </ProtectedRoute>
+            }
+          />{" "}
+          {/* new blog route */}
+
+          <Route
+            path="edit/:id"
+            element={
+              <ProtectedRoute>
+                <EditBlog />
+              </ProtectedRoute>
+            }
+          />{" "}
+          {/* edit blog route */}
         </Route>
       </Routes>
     </Router>

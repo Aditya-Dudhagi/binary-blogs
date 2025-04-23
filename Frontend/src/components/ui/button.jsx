@@ -1,18 +1,13 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "./button-variants"; // adjust path as needed
+// src/components/ui/button.jsx
 
-function Button({ className, variant, size, asChild = false, ...props }) {
-  const Comp = asChild ? Slot : "button";
-
+export function Button({ children, className = "", onClick, type = "button" }) {
   return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+    <button
+      type={type}
+      onClick={onClick}
+      className={`px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium ${className}`}
+    >
+      {children}
+    </button>
   );
 }
-
-export { Button };

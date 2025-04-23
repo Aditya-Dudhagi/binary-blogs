@@ -4,13 +4,17 @@ require('dotenv').config();
 // import express
 const express = require('express')
 const app = express();
+const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const testRoutes = require('./routes/test')
 const blogRoutes = require('./routes/blog')
 
 
+app.use(cors());
+
 // middleware to parse json
 app.use(express.json());
+
 
 // import our connection function 
 const connectDB = require('./config/db')
