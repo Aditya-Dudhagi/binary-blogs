@@ -7,6 +7,7 @@ import BlogDetail from "./pages/BlogDetail"
 import NewBlog from './pages/NewBlog'
 import EditBlog from './pages/EditBlog'
 import ProtectedRoute from "./components/ui/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
 
 
 
@@ -19,8 +20,9 @@ export default function App() {
         {/* Main layout that holds the header, sidebar, etc. */}
         <Route path="/" element={<MainLayout />}>
           {/* Define different routes inside the MainLayout */}
-          <Route index element={<home />} /> {/* Home route */}
+          <Route index element={<Home />} /> {/* Home route */}
           <Route path="login" element={<Login />} /> {/* Login route */}
+          <Route path="dashboard" element={<Dashboard />} /> {/* Dashboard route */}
           <Route path="register" element={<Register />} />{" "}
           {/* Register route */}
           <Route path="blog/:id" element={<BlogDetail />} />{" "}
